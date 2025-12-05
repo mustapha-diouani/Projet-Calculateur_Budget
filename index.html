@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="titre">
+      <h1>Calculateur de Budget</h1>
+      <p>Suivi rapide de vos revenus et dépences</p>
+    </header>
+    <main class="tableau-suivi">
+      <div class="zone-information">
+        <p>Revenus<br /><span id="revenus">0</span></p>
+        <p>Dépenses<br /><span id="depences">0</span></p>
+        <p>Solde<br /><span id="solde">0</span></p>
+      </div>
+      <form class="zone-saisie">
+        <h3>Ajouter un montant</h3>
+        <div class="saisie">
+          <select class="entrer" id="choix-revenus">
+            <option value="revenus">Revenus</option>
+            <option value="depenses">Dépenses</option>
+          </select>
+          <input
+            type="text"
+            id="description"
+            class="entrer"
+            placeholder="Description(ex: Salaire ...)"
+          />
+          <input
+            type="number"
+            id="montant"
+            class="entrer"
+            placeholder="Montant $"
+            <br
+          />
+        </div>
+        <div class="Valider">
+          <button id="btn-ajouter">Ajouter</button>
+          <button id="btn-reinitialiser">Réinitialiser</button>
+        </div>
+      </form>
+      <div class="liste" id="transaction"></div>
+    </main>
+  </body>
+</html>
