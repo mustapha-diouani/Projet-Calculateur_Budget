@@ -1,7 +1,7 @@
 body {
   width: 100%;
 
-  background-color: antiquewhite;
+  background-color: rgb(237, 235, 233);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +19,7 @@ header {
   min-height: 300px;
   margin: 10px;
   padding: 10px;
-  background-color: bisque;
+  background: rgb(193, 190, 187);
   border-radius: 20px;
 }
 
@@ -32,7 +32,7 @@ header {
   flex: 1;
   margin: 10px;
   padding: 10px;
-  background-color: rgb(208, 218, 218);
+  background: rgb(230, 229, 223);
   border: 1px solid;
   border-radius: 10px;
 }
@@ -57,4 +57,52 @@ button {
 }
 #btn-ajouter {
   background-color: darkgreen;
+}
+
+.liste {
+  margin-top: 10px;
+
+  overflow: auto;
+}
+.item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: 8px;
+        border: 2px solid rgba(16, 1, 1, 0.05);
+        margin-bottom: 8px;
+        background: linear-gradient(
+          180deg,
+          rgba(230, 229, 223, 0.1),
+          transparent
+        );
+      }
+
+.left {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.dot {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.cat-Transport {
+  background: linear-gradient(180deg, #08394b, #0b5668);
+}
+.cat-Food {
+  background: linear-gradient(180deg, #3b0b21, #7a1436);
+}
+.cat-House {
+  background: linear-gradient(180deg, #25322a, #416f4d);
+}
+.meta small {
+  color: var(--muted);
+  display: block;
 }
