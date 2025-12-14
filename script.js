@@ -7,11 +7,12 @@ const btnajouter = document.getElementById("btn-ajouter");
 const resetBtn = document.getElementById("btn-reinitialiser");
 const montant = document.getElementById("montant");
 const types = document.getElementById("choix-revenus");
-const description = document.getElementById("description");
+
 const revenus = document.getElementById("revenus");
 const depences = document.getElementById("depences");
 const soldes = document.getElementById("solde");
 const transactionsEl = document.getElementById("transaction");
+const categorieEl = document.querySelector(".categorie");
 // state
 let state = { transactions: [] };
 
@@ -67,13 +68,13 @@ function render() {
       const left = document.createElement("div");
       left.className = "left";
       const dot = document.createElement("div");
-      dot.className = "dot cat-" + (t.category || "House");
+      dot.className = "dot cat-" + (t.type || "autre");
       dot.textContent = t.type === "revenus" ? "+" : "-";
       const meta = document.createElement("div");
       meta.className = "meta";
       const title = document.createElement("div");
       title.textContent =
-        t.desc || (t.type === "revenus" ? "Revenu" : "Dépense");
+        t.categorie || (t.type === "revenus" ? "Revenu" : "Dépense");
       const small = document.createElement("small");
       small.textContent = new Date(t.Date).toLocaleString();
       meta.appendChild(title);
@@ -103,28 +104,42 @@ function render() {
   save();
 }
 
-function guessCategory(desc) {
-  if (!desc) return "House";
-  const s = desc.toLowerCase();
-  if (/uber|taxi|bus|car|essence|transport/.test(s)) return "Transport";
-  if (/restau|repas|cafe|restaurant|food|manger|course/.test(s)) return "Food";
-  if (/loyer|rent|appart|maison|facture/.test(s)) return "House";
-  return "House";
-}
+types.addEventListener("change", (event) => {
+  if (event.target.value === "revenus") {
+    categorieEl.innerHTML = "";
+    categorieEl.innerHTML = `<select class="entrer" id="choix-categorie">
+            <option value="salaire">Salaire</option>
+            <option value="caf">Caf</option>
+            <option value="remboursement">Remboursement</option>
+            <option value="chomage">Chômage</option>
+            <option value="autre">Autre</option>
+          </select>`;
+  } else {
+    categorieEl.innerHTML = "";
+    categorieEl.innerHTML = `<select class="entrer" id="choix-categorie">
+            <option value="loyer">Loyer</option>
+            <option value="nourriture">Nourriture</option>
+            <option value="loisir">Loisir</option>
+            <option value="transport">Transport</option>
+            <option value="autre">Autre</option>
+          </select>`;
+  }
+});
 
 // @ts-ignore
 btnajouter?.addEventListener("click", () => {
   event?.preventDefault();
-
+  const categorieE2 = document.getElementById("choix-categorie");
   const type = types.value;
-  const desc = description.value.trim();
+  const categorie = categorieE2.value;
+
   const montants = Math.abs(parseFloat(montant.value) || 0);
   if (montants <= 0) return alert("Indique un montant supérieur à 0");
-  const tab = { type, desc, montants, Date: new Date().toISOString() };
+  const tab = { type, categorie, montants, Date: new Date().toISOString() };
 
   state.transactions.push(tab);
   console.log(state);
-  description.value = "";
+
   montant.value = "";
 
   render();
@@ -142,10 +157,10 @@ window.editTx = function (revIndex) {
   const tx = state.transactions[idx];
   const newDesc = prompt("Modifier la description", tx.desc);
   if (newDesc === null) return; // cancel
-  const newAmount = prompt("Modifier le montant", tx.amount);
+  const newAmount = prompt("Modifier le montant", tx.montants);
   if (newAmount === null) return;
   tx.desc = newDesc;
-  tx.amount = Math.abs(parseFloat(newAmount) || tx.amount);
+  tx.montants = Math.abs(parseFloat(newAmount) || tx.montants);
   render();
 };
 

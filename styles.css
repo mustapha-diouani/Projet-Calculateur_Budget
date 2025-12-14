@@ -17,6 +17,7 @@ header {
   flex-direction: column;
   gap: 5px;
   min-height: 300px;
+  max-height: 500px;
   margin: 10px;
   padding: 10px;
   background: rgb(193, 190, 187);
@@ -40,6 +41,10 @@ header {
   display: flex;
   flex-direction: column;
   margin: 10px;
+}
+.saisie {
+  display: flex;
+  gap: 8px;
 }
 .entrer {
   flex: 1;
@@ -65,19 +70,15 @@ button {
   overflow: auto;
 }
 .item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px;
-        border-radius: 8px;
-        border: 2px solid rgba(16, 1, 1, 0.05);
-        margin-bottom: 8px;
-        background: linear-gradient(
-          180deg,
-          rgba(230, 229, 223, 0.1),
-          transparent
-        );
-      }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid rgba(16, 1, 1, 0.05);
+  margin-bottom: 8px;
+  background: linear-gradient(180deg, rgba(230, 229, 223, 0.1), transparent);
+}
 
 .left {
   display: flex;
@@ -93,13 +94,13 @@ button {
   justify-content: center;
   font-weight: 700;
 }
-.cat-Transport {
-  background: linear-gradient(180deg, #08394b, #0b5668);
+.cat-depences {
+  background: linear-gradient(180deg, #4b1a1e, #8b2c2f);
 }
-.cat-Food {
+.cat-revenus {
   background: linear-gradient(180deg, #3b0b21, #7a1436);
 }
-.cat-House {
+.cat-revenus {
   background: linear-gradient(180deg, #25322a, #416f4d);
 }
 .meta small {

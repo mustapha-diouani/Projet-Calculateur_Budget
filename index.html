@@ -25,12 +25,16 @@
             <option value="revenus">Revenus</option>
             <option value="depences">Dépenses</option>
           </select>
-          <input
-            type="text"
-            id="description"
-            class="entrer"
-            placeholder="Description(ex: Salaire ...)"
-          />
+          <div class="categorie">
+            <select class="entrer" id="choix-categorie">
+              <option value="salaire">Salaire</option>
+              <option value="caf">Caf</option>
+              <option value="remboursement">Remboursement</option>
+              <option value="chomage">Chômage</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+
           <input
             type="number"
             id="montant"
